@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-cicd-deployment
+  labels:
+    app: demo-cicd-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-cicd-app
+  template:
+    metadata:
+      labels:
+        app: demo-cicd-app
+    spec:
+      containers:
+        - name: demo-cicd-container
+          image: ritesh1824/demo-cicd-app:latest
+          ports:
+            - containerPort: 8080
+          # Optional: faster restarts when you push new images
+          imagePullPolicy: Always
