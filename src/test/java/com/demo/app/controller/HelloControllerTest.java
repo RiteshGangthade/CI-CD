@@ -28,4 +28,24 @@ public class HelloControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("text/plain;charset=UTF-8"));
     }
+
+    @Test
+    public void testHealthEndpoint() throws Exception {
+        mockMvc.perform(get("/api/health"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("UP"));
+    }
+
+    @Test
+    public void testHealthEndpointReturnsOkStatus() throws Exception {
+        mockMvc.perform(get("/api/health"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testHealthEndpointContentType() throws Exception {
+        mockMvc.perform(get("/api/health"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("text/plain;charset=UTF-8"));
+    }
 }

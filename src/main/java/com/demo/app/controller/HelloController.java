@@ -10,4 +10,9 @@ public class HelloController {
     public String hello() {
         return "Hello from CI/CD demo app!";
     }
+
+    @GetMapping("/api/health")
+    public String health() {
+        return "UP";
+    }
 }
